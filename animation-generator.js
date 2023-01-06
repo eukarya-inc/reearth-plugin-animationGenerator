@@ -195,9 +195,24 @@ reearth.ui.show(
       line-height: 16px;
     }
   
-    #lat-input,
+    #lat-input{
+      width: calc((100% - 100px) / 2);
+      background: #171618;
+      float: right;
+      border: 1px solid #4a4a4a;
+      height: 27px;
+      color: #c7c5c5;
+      font-size: 12px;
+      font-family: "Noto Sans";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      padding-left: 7px;
+    }
+    
     #numbertime-input {
-      width: 99px;
+      width: calc((100% - 100px) / 2);
       background: #171618;
       border: 1px solid #4a4a4a;
       height: 27px;
@@ -210,7 +225,7 @@ reearth.ui.show(
       line-height: 16px;
       padding-left: 7px;
     }
-  
+
     #lng-input {
       width: 99px;
       background: #171618;
@@ -373,6 +388,8 @@ reearth.ui.show(
       justify-content: center;
       align-items: center;
       font-size: 14px;
+      font-family: "Noto Sans";
+      font-style: normal;
     }
   
     .action-list-span {
@@ -387,7 +404,7 @@ reearth.ui.show(
       margin-bottom: 5px;
       overflow-y: scroll;
       overflow-x: hidden;
-      max-height: 480px;
+      max-height: 545px;
     }
   
     .form-group {
@@ -395,7 +412,7 @@ reearth.ui.show(
       position: static;
       display: block;
       overflow: hidden;
-      height: 32px;
+      height: 34px;
       margin-top: 5px;
     }
 
@@ -409,10 +426,7 @@ reearth.ui.show(
       font-family: "Noto Sans";
       width: 70px;
       display: inline-block;
-    }
-  
-    #location-edit-btn {
-      padding-left: 8px;
+      margin-top: 6px;
     }
   
     #height-label {
@@ -459,10 +473,6 @@ reearth.ui.show(
       color: white;
     }
 
-    #location-edit-btn {
-      cursor: pointer;
-    }
-
   .keypoint-item {
     height: 32px;
     align-items: center;
@@ -496,17 +506,18 @@ reearth.ui.show(
     }
   
     #lat-location-label {
-      padding-left: 40px;
+      padding-left: 45px;
     }
   
     #lng-location-label {
-      padding-left: 65px;
+      padding-left: 90px;
     }
   
     #time-label-2 {
       font-size: 12px;
       font-family: "Noto Sans";
       font-weight: 500;
+      padding-left: 8px;
     }
   
     /* Custom select option - Start */
@@ -592,7 +603,7 @@ reearth.ui.show(
       border: none !important;
       flex-direction: row;
       display: flex;
-      width: 235px !important;
+      width: 234px !important;
     }
     .select2-container--default .select2-selection--single {
       background: #181618 !important;
@@ -639,7 +650,7 @@ reearth.ui.show(
       padding-bottom: 10px;
     }
 
-    .point-title {
+    .input-group--title {
       height: 10px;
       left: 5.13%;
       right: 69.23%;
@@ -660,7 +671,7 @@ reearth.ui.show(
       color: #C7C5C5;
     }
 
-    .point-input {
+    .input-group--left {
       width: 150px;
       height: 31px;
       margin-left: 20px;
@@ -678,16 +689,7 @@ reearth.ui.show(
       padding: 0px;
     }
 
-    .point-input {
-      width: 150px;
-      height: 31px;
-      margin-left: 20px;
-      display: inherit;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .pointInput {
+    .left-input-field {
       width: 76px;
       height: 27px;
       background: #171618;
@@ -701,7 +703,7 @@ reearth.ui.show(
       padding-left: 5px;
     }
 
-    .inputSizePoint {
+    .input-group--right {
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -709,23 +711,9 @@ reearth.ui.show(
       margin-right: -13px;
     }
 
-    #sizePoint {
-      width: 70px;
-      height: 27px;
-      background: #171618;
-      border: 1px solid #4a4a4a;
-      color: #c7c5c5;
-      font-size: 12px;
-      font-family: "Noto Sans";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 12px;
-      line-height: 16px;
-      margin-left: 4px;
-      padding-left: 7px;
-    } 
+    
 
-    #widthOutline {
+    .input-field {
       width: 71px;
       height: 27px;
       background: #171618;
@@ -741,12 +729,12 @@ reearth.ui.show(
       padding-left: 7px;
     }
 
-    .point-sm-gr {
+    .input-group--row {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
     }
-    .point-sm-gr label {
+    .input-group--row label {
       height: 14px;
       left: 2.09%;
       right: 76.96%;
@@ -795,7 +783,6 @@ reearth.ui.show(
       padding: 0px;
     }
 
-
     .color-picker::-webkit-color-swatch-wrapper {
       padding: 0;
     }
@@ -809,6 +796,77 @@ reearth.ui.show(
       top: -20px;
       left: 280px;
     }
+
+    #start-drawing {
+      margin-top: 8px;
+    }
+
+    #delete-keypoint-icon {
+      padding-top: 2px;
+      cursor: not-allowed;
+    }
+
+    /* Toggle Switch */
+    .switch input[type='checkbox'] {
+      position: absolute;
+      width: 0;
+      height: 0;
+      visibility: hidden;
+    }
+
+    .switch .base {
+      margin-left:1px;
+      width: 23px;
+      border-radius: 15px;
+      height: 14px;
+      border: 1px solid gray;
+    }
+    .switch .circle {
+      position: absolute;
+      top: 1px;
+      width: 14px;
+      height: 14px;
+      border-radius: 12px;
+      background-color: gray;
+      transition: 0.5s;
+    }
+    input:checked ~ .base {
+      border: 1px solid #bfbfbf;
+      transition: 0.5s;
+    }
+    input:checked ~ .circle {
+      transform: translateX(100%);
+      background-color: #bfbfbf;
+    }
+    .switch {
+      position: relative;
+    }
+    .switch_label {
+      display: flex;
+      align-items: center;
+      padding-left: 34px;
+    }
+      
+    .switch_label .title {
+      margin-left: 9px;
+    }
+
+    .checkbox-clamp {
+      display: flex;
+      align-items: center;
+      margin-left: 15px;
+    }
+
+    #isClampToGround {
+      accent-color: #171618;
+      outline: 1px solid #c7c5c5
+    }
+
+    .checkbox-clamp label {
+      margin-left: 4px;
+    }
+  /* Toggle Switch */
+    
   </style>
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -910,31 +968,31 @@ reearth.ui.show(
           <!-- handle point html -->
           <div class="point-setting-section" id="point-setting-section" >
             <div class="point-gr">
-              <h3 class="point-title">点</h3>
-              <div class="point-sm-gr">
-                <div class="point-input">
+              <h3 class="input-group--title">点</h3>
+              <div class="input-group--row">
+                <div class="input-group--left">
                   <label for="colorPoint">色</label>
                   <input type="color" class="color-picker" value="#FFFFFF" onchange="changeColorPicker(this)">
-                  <input type="string" class="pointInput color-code" name="colorPoint" id="colorPoint" value="#FFFFFF" onchange="changeColorCode(this)">
+                  <input type="string" class="left-input-field color-code" name="colorPoint" id="colorPoint" value="#FFFFFF" onchange="changeColorCode(this)">
                 </div>
-                <div class="inputSizePoint">
-                  <label for="sizePoint">サイズ</label>
-                  <input type="number" name="sizePoint" id="sizePoint" value="10">
+                <div class="input-group--right">
+                  <label for="size-point">サイズ</label>
+                  <input type="number" class="input-field" id="size-point" value="10">
                   <span class="spanInput">px</span>
                 </div>
               </div>
             </div>
             <div class="point-gr">
-              <h3 class="point-title">枠線</h3>
-              <div class="point-sm-gr">
-                <div class="point-input">
+              <h3 class="input-group--title">枠線</h3>
+              <div class="input-group--row">
+                <div class="input-group--left">
                   <label for="colorOutline">色</label>
                   <input type="color" class="color-picker" value="#FFFFFF" onchange="changeColorPicker(this)">
-                  <input type="string" class="pointInput color-code" name="colorOutline" id="colorOutline" value="#FFFFFF" onchange="changeColorCode(this)">
+                  <input type="string" class="left-input-field color-code" name="colorOutline" id="colorOutline" value="#FFFFFF" onchange="changeColorCode(this)">
                 </div>
-                <div class="inputSizePoint">
-                  <label for="sizePoint">太さ</label>
-                  <input type="number" name="widthOutline" id="widthOutline" value="10">
+                <div class="input-group--right">
+                  <label for="width-outline">太さ</label>
+                  <input type="number" class="input-field" id="width-outline" value="10">
                   <span class="spanInput">px</span>
                 </div>
               </div>
@@ -943,7 +1001,7 @@ reearth.ui.show(
           <!-- close handle point html -->
 
           <div class="form-group">
-            <label class="input-title">Start Time</label>
+            <label class="input-title">開始時刻</label>
             <input
               type="datetime-local"
               class="common-input"
@@ -954,8 +1012,42 @@ reearth.ui.show(
               step="1"
             />
           </div>
-          <div class="form-group m">
-            <input
+
+          <!-- Path Setting -->
+          <div class="input-group" id="path-setting-section">
+            <h3 class="input-group--title">線 
+              
+            <label for="switch-display-path" class="switch_label">
+              <div class="switch">
+                <input type="checkbox" id="switch-display-path" onchange="switchDisplayPath(this)"/>
+                <div class="circle"></div>
+                <div class="base"></div>
+              </div>
+              <span class="title">表示</span>
+            </label>
+
+            <div class="checkbox-clamp">
+              <input type="checkbox" id="isClampToGround" name="isClampToGround" checked>
+              <label for="isClampToGround">線を地面に固定する</label>
+            </div>
+              
+            </h3>
+            <div class="input-group--row">
+              <div class="input-group--left">
+                <label for="color-path">色</label>
+                <input type="color" class="color-picker" value="#FFFFFF" onchange="changeColorPicker(this)">
+                <input type="string" class="left-input-field color-code" id="color-path" value="#FFFFFF" onchange="changeColorCode(this)">
+              </div>
+              <div class="input-group--right">
+                <label for="width-path">太さ</label>
+                <input type="number" class="input-field" id="width-path" value="10">
+                <span class="spanInput">px</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="">
+            <input 
             type="button"
             class="blue-btn"
             id="start-drawing"
@@ -963,10 +1055,12 @@ reearth.ui.show(
             onclick="startDrawing(this)"
           />
           </div>
+
+          
          
           <div id="keypoint-section">
             <label class="title-list">地点リスト</label>
-            <span class="action-list-span btn" onclick="deleteKeypoint()" id="delete-keypoint-icon">
+            <span class="action-list-span" onclick="deleteKeypoint()" id="delete-keypoint-icon">
               <svg width="16"
                 height="16"
                 viewBox="0 0 16 16"
@@ -1007,6 +1101,9 @@ reearth.ui.show(
                   <option value='60'>分</option>
                   <option value='3600'>時</option>
                 </select>
+                <span class="" id="time-label-2" >
+                  後
+                </span>
               </div>
             </div>
           </div>
@@ -1050,13 +1147,13 @@ reearth.ui.show(
     $('#3dmodel').on("select2:selecting", function(e) { 
       setAttrByAnimationId(getSelectedAnimationId(), "data-3dmodel", e.params.args.data.id);
       setAttrByAnimationId(getSelectedAnimationId(), "data-model-type", e.params.args.data.element.attributes[0].nodeValue);
-
+      setAttrByAnimationId(getSelectedAnimationId(), "data-icon-scale", e.params.args.data.element.attributes[1].nodeValue);
       if (e.params.args.data.id === "point") {
         getElmById("point-setting-section").style.display = "block";
       } else {
         getElmById("point-setting-section").style.display = "none";
       }
-
+      updateIframe();
     });
   
     function getElmById(id) {
@@ -1087,40 +1184,40 @@ reearth.ui.show(
         //handle when select option is empty => cant 編集を開始する
 
         if(getValue("data-model-type")) {
-          console.log(123);
           isStartDrawing = true;
 
           //Set style for drawing button
           item.value = "編集を終了する";
-          //getElmById("animation-list").style.height = "355px";
+          //getElmById("path-setting-section").style.display = "block";
           getElmById("keypoint-section").style.display = "block";
           item.style.backgroundColor = "#597EF7";
+
+          //enable deleting keypoint icon
+          getElmById("delete-keypoint-icon").style.cursor = "pointer";
+          getElmById("delete-keypoint-icon").setAttribute("onclick", "deleteKeypoint();");
         }
         
 
       } else if (item.value == "編集を終了する") {
-
-        //handle if draw 1 point is not allow to finish
-        // if(JSON.parse(getValue("data-keypoint")).length > 1) {
           handleShowModel();
           isStartDrawing = false;
           item.value = "編集を開始する";
-        // }
+          item.style.backgroundColor = "#3b3cd0";
+
+          //disable deleting keypoint icon
+          getElmById("delete-keypoint-icon").style.cursor = "not-allowed";
+          getElmById("delete-keypoint-icon").setAttribute("onclick", "");
       }
-
-      /* Update */
+      
       updateIframe();
-      /* Update */
     }
-
-    /* Update */
+    
     function updateIframe() {
       wapperElm = getElmById("wrapper");
       heightWp = wapperElm.offsetHeight;
       expanded = false;
       parent.postMessage({ type: "resize", expanded, heightWp }, "*");
     }
-    /* Update */
   
     function drawing(item){
       keypoints = getValue("data-keypoint") != "" ? JSON.parse(getValue("data-keypoint")) : [];
@@ -1142,19 +1239,21 @@ reearth.ui.show(
       getElmById("right-section").style.display = "block";
       getElmById("temp-right-section").style.display = "none";
       getElmById("keypoint-list").innerHTML = "";
- 
+      resetAllInputs();
   
       //set current time
       //setAttributeByParentId("animation-item-temp", ".animation-data", "data-start-time", getCurrentTime());
       setAttrByAnimationId("animation-item-temp", "data-start-time", getCurrentTime());
+      setAttrByAnimationId("animation-item-temp", "data-path-setting", JSON.stringify(getPathSetting()));
+      setAttrByAnimationId("animation-item-temp", "data-point-setting", JSON.stringify(getPointSetting()));
       handleAnimationList();
 
 
       //reset right section
       $('#3dmodel').val("point").trigger('change');
-      getElmById("start-drawing").value = "編集を開始する"
-      //getElmById("animation-list").style.height = "172px";
+      getElmById("start-drawing").value = "編集を開始する";
       getElmById("keypoint-section").style.display = "none";
+      //getElmById("path-setting-section").style.display = "none";
 
 
       keypoints = [];
@@ -1196,37 +1295,78 @@ reearth.ui.show(
       if(getElmById("colorPoint").value && getElmById("colorOutline").value) {
         setAttrByAnimationId(getSelectedAnimationId(), "data-point-setting", JSON.stringify(getPointSetting()));
       }
-      handleShowModel();
+
+      //Data will be updated automatically when finishing draw
+      if(!isStartDrawing) {
+        handleShowModel();
+      }
     });
+
 
     function getPointSetting() {
       let pointSetting = {
         point: {
-          color: hexToRgbA(getElmById("colorPoint").value),
-          size:  getElmById("sizePoint").value
+          color: getElmById("colorPoint").value,
+          size:  getElmById("size-point").value
         },
         outline: {
-          color: hexToRgbA(getElmById("colorOutline").value),
-          width: getElmById("widthOutline").value
+          color: getElmById("colorOutline").value,
+          width: getElmById("width-outline").value
         }
       }
       return pointSetting;
     }
 
-    function addKeypoint(newKeypoint) {
+    //add path setting to animation attribute
+    document.getElementById('path-setting-section').addEventListener('change', function(event){
+      var elm = event.target;
+      if(getElmById("color-path").value) {
+        setAttrByAnimationId(getSelectedAnimationId(), "data-path-setting", JSON.stringify(getPathSetting()));
+      }
       
+      //Data will be updated automatically when finishing draw
+      if(!isStartDrawing) {
+        resetPathAnimation();
+      }
+    });
+
+
+    function getPathSetting() {
+      let pathSetting = {
+        color: getElmById("color-path").value,
+        display: getElmById("switch-display-path").checked,
+        width: getElmById("width-path").value,
+        isClampToGround: getElmById("isClampToGround").checked
+      }
+      return pathSetting;
+    }
+    //end add path setting to animation attribute
+
+    //This function will add new keypoint into keypoint list
+    function addKeypoint(newKeypoint) {
+      //Get keypoint list data before add new keypoint
       let keypointData = getValue("data-keypoint");
       let keypointArr = []; 
       let newKeypointId = "keypoint-item-";
+
+      //If keypoint list data is not empty
       if (keypointData !== "") {
         let selectedKeypoint = getElmById("selectedKeypoint").getAttribute("data-keypoint-id");
         let beforeKeypointId = selectedKeypoint.substring(selectedKeypoint.lastIndexOf("-")+1);
         keypointArr = JSON.parse(keypointData);
         keypointArr.splice(beforeKeypointId, 0, newKeypoint);
         newKeypointId = newKeypointId + (parseInt(beforeKeypointId) + 1);
-      } else {
+      
+      } else { 
+        //If keypoint list data is empty (user start creating new animation)
+
+        //Number-time of the first keypoint have to be 0
+        newKeypoint.time = 0;
+        getElmById("numbertime-input").value = 0;
+
         keypointArr.push(newKeypoint);
         newKeypointId = newKeypointId + 1;
+
       }
       saveAnimationData(keypointArr);
       showKeypointList(getSelectedAnimationId());
@@ -1278,8 +1418,8 @@ reearth.ui.show(
       
     }
 
-    let pathLayerIdSelected
-    let modelLayerIdSelected
+    // let pathLayerIdSelected
+    // let modelLayerIdSelected
   
     function selectAnimation(item) {
       
@@ -1295,19 +1435,54 @@ reearth.ui.show(
         "data-animation-id",
         item.getAttribute("id")
       );
+
+      //Show animation data
       let aniDataElm = item.querySelector(".animation-data");
       getElmById("start-time").value = aniDataElm.getAttribute("data-start-time");
-      $("#3dmodel")
-        .val(aniDataElm.getAttribute("data-3dmodel"))
-        .trigger("change");
+      
+      if (aniDataElm.getAttribute("data-model-type") != "point") {
+        $("#3dmodel")
+          .val(aniDataElm.getAttribute("data-3dmodel"))
+          .trigger("change");
+          getElmById("point-setting-section").style.display = "none";
+      } else {
+        $("#3dmodel")
+          .val("point")
+          .trigger("change");
+          getElmById("point-setting-section").style.display = "block";
+      }
+      
 
       getElmById("keypoint-section").style.display = "block";
-      //pathLayerData
-      
-      pathLayerIdSelected = aniDataElm.getAttribute("data-path-layer")
-      modelLayerIdSelected = aniDataElm.getAttribute("data-model-layer")
-
       showKeypointList(item.getAttribute("id"));
+
+      let pathSetting = JSON.parse(aniDataElm.getAttribute("data-path-setting"));
+      getElmById("switch-display-path").checked = pathSetting.display;
+      if(getElmById("switch-display-path").checked) {
+        getElmById("switch-display-path").closest('.switch_label').querySelector('.title').textContent = "表示";
+      } else {
+        getElmById("switch-display-path").closest('.switch_label').querySelector('.title').textContent = "非表示";
+      }
+      getElmById("isClampToGround").checked = pathSetting.isClampToGround
+      getElmById("color-path").value = pathSetting.color;
+      changeColorCode(getElmById("color-path"));
+      getElmById("width-path").value = pathSetting.width;
+      
+      if (aniDataElm.getAttribute("data-model-type") === "point" 
+        && aniDataElm.getAttribute("data-point-setting")) {
+        let pointSetting = JSON.parse(aniDataElm.getAttribute("data-point-setting"));
+        getElmById("colorPoint").value = pointSetting.point.color;
+        changeColorCode(getElmById("colorPoint"));
+        getElmById("size-point").value = pointSetting.point.size;
+        getElmById("colorOutline").value = pointSetting.outline.color;
+        changeColorCode(getElmById("colorOutline"));
+        getElmById("width-outline").value = pointSetting.outline.width;
+        
+      }
+      // pathLayerIdSelected = aniDataElm.getAttribute("data-path-layer")
+      // modelLayerIdSelected = aniDataElm.getAttribute("data-model-layer")
+
+      
       updateIframe();
     }
 
@@ -1344,6 +1519,11 @@ reearth.ui.show(
         elm.value
       );
       setAttrByAnimationId(getSelectedAnimationId(), "data-start-time",  elm.value);
+
+      //Data will be updated automatically when finishing draw
+      if(!isStartDrawing) {
+        handleShowModel();
+      }
     }
 
     let expanded = false;
@@ -1481,9 +1661,13 @@ reearth.ui.show(
             opt = document.createElement("option");
             item.modelOptions = item.modelOptions ? item.modelOptions : "model";
             opt.setAttribute("data-model-type", item.modelOptions); 
+            item.scale = item.scale ? item.scale : 1;
+            opt.setAttribute("data-icon-scale", item.scale); 
             opt.value = item.modelUrl;
             opt.innerHTML = item.modelName;
             modelElm.appendChild(opt);
+
+            //work with scale of billboard
           }
         });
       }
@@ -1500,15 +1684,18 @@ reearth.ui.show(
           lng : e.data.payload.lng,
           height : (heightPoint == "" ) ? 0 : parseInt(heightPoint),
           unitTime : parseInt(unitTime),
-          time : (timePoint == "" ) ? 0 : parseInt(timePoint)
+          time : (timePoint == "" || timePoint == "0" ) ? 10 : parseInt(timePoint)
         };
         
         let newKeypointId = addKeypoint(newKeypoint);
         selectKeypoint(getElmById(newKeypointId));
+
+        setAttrByAnimationId(getSelectedAnimationId(), "data-path-setting", JSON.stringify(getPathSetting()));
         
         let dataObj = {
           keypoints: JSON.parse(getValue("data-keypoint")),
-          startTime: getValue("data-start-time")
+          startTime: getValue("data-start-time"),
+          path: JSON.parse(getValue("data-path-setting"))
         }
 
         createPathCzml(dataObj);
@@ -1550,6 +1737,15 @@ reearth.ui.show(
       getElmById("numbertime-input").value = keypoint.time;
       getElmById("unittime-input").value = keypoint.unitTime;
 
+      //Number-time of the first keypoint can not edit
+      if (parseInt(id) == 1) {
+        getElmById("numbertime-input").disabled = true;
+        getElmById("numbertime-input").style.cursor = "not-allowed";
+      } else {
+        getElmById("numbertime-input").disabled = false;
+        getElmById("numbertime-input").style.cursor = "";
+      }
+
     }
 
     //function editKeypoint() {
@@ -1576,6 +1772,7 @@ reearth.ui.show(
         keypoints: keypoints,
         startTime: getValue("data-start-time"),
         modelUrl: $('#3dmodel').select2().val() || "https://static.reearth.io/assets/01gkn5kjpxbhtnr8adpdmq3jaf.glb",
+        path: JSON.parse(getValue("data-path-setting"))
       }
 
       handleShowModel();
@@ -1606,6 +1803,7 @@ reearth.ui.show(
         keypoints: keypoints,
         startTime: getValue("data-start-time"),
         modelUrl: $('#3dmodel').select2().val() || "https://static.reearth.io/assets/01gkn5kjpxbhtnr8adpdmq3jaf.glb",
+        path: JSON.parse(getValue("data-path-setting")),
       }
 
       handleShowModel();
@@ -1614,21 +1812,28 @@ reearth.ui.show(
   
     // Handle show model after click finish button
     function handleShowModel() {
-      setAttrByAnimationId(getSelectedAnimationId(), "data-point-setting", JSON.stringify(getPointSetting()));
+      //setAttrByAnimationId(getSelectedAnimationId(), "data-point-setting", JSON.stringify(getPointSetting()));
+      //setAttrByAnimationId(getSelectedAnimationId(), "data-path-setting", JSON.stringify(getPathSetting()));
 
-      let dataObj = {
-        keypoints: JSON.parse(getValue("data-keypoint")),
-        startTime: getValue("data-start-time"),
-        modelUrl: getValue("data-3dmodel") || "https://static.reearth.io/assets/01gkn5kjpxbhtnr8adpdmq3jaf.glb",
-        dataType: getValue("data-model-type"),
-        dataPoint: getValue("data-point-setting"),
-      }
-
-      czmlData2 = createAnimationCzml(dataObj);
       
-      //Get layer Id
-      modelLayerId = getValue("data-model-layer");
-      parent.postMessage({ type: "showModel", czmlData2, modelLayerId }, "*");
+      if(getValue("data-keypoint")) {
+        let dataObj = {
+          keypoints: JSON.parse(getValue("data-keypoint")),
+          startTime: getValue("data-start-time"),
+          modelUrl: getValue("data-3dmodel") || "https://static.reearth.io/assets/01gkn5kjpxbhtnr8adpdmq3jaf.glb",
+          dataType: getValue("data-model-type"),
+          dataPoint: getValue("data-point-setting"),
+          dataPath: JSON.parse(getValue("data-path-setting")),
+          scale: getValue("data-icon-scale")
+        }
+  
+          czmlData2 = createAnimationCzml(dataObj);
+          
+          //Get layer Id
+          modelLayerId = getValue("data-model-layer");
+          parent.postMessage({ type: "showModel", czmlData2, modelLayerId }, "*");
+      }
+      
     }
   
     //Close handle show model after click finish button
@@ -1638,7 +1843,23 @@ reearth.ui.show(
       let keypoints = dataObj.keypoints;
       let typeModel = dataObj.dataType;
       let pointSetting = JSON.parse(dataObj.dataPoint);
+      let pathSetting = dataObj.dataPath;
+      let pathColor = pathSetting.color;
+      let pathWidth = pathSetting.width;
+      let pathDisplay = pathSetting.display;
+      let pathIsClampToGround = pathSetting.isClampToGround;
+      if(!pathDisplay) {
+        pathColor = [0,0,0,0]
+      } else {
+        pathColor = hexToRgbA(pathColor)
+      }
+      let scaleIcon = dataObj.scale;
       let l = keypoints.length;
+      let polylineCreateArr = [];
+      for (let i=0; i< l; i++) {
+        polylineCreateArr.push(keypoints[i].lng, keypoints[i].lat, keypoints[i].height)
+      }
+
       for (let i=0; i< l; i++) {
         temp2.push(keypoints[i].time*keypoints[i].unitTime, keypoints[i].lng, keypoints[i].lat, keypoints[i].height)
       }
@@ -1674,20 +1895,22 @@ reearth.ui.show(
         },
         {
           id: "path" + Date.now().toString(36) + Math.random().toString(36).substr(2),
-          name: "path with GPS flight data",
-          description:
-            "<p>Hang gliding flight log data from Daniel H. Friedman.<br>Icon created by Larisa Skosyrska from the Noun Project</p>",
+          name: "Animation Generator",
+          description: "Generated by Re:earth Plugin",
           availability: interval,
-          path: {
+          polyline: {
+            positions: {
+              cartographicDegrees: polylineCreateArr,
+            },
             material: {
-              polylineOutline: {
+              solidColor: {
                 color: {
-                  rgba: [255, 255, 255, 255],
+                  rgba: pathColor,
                 },
               },
             },
-            width: 8,
-            resolution: 5,
+            width: pathWidth,
+            clampToGround: pathIsClampToGround,
           },
           orientation: {
             velocityReference: "#position",
@@ -1718,27 +1941,29 @@ reearth.ui.show(
         },
         {
           id: "path" + Date.now().toString(36) + Math.random().toString(36).substr(2),
-          name: "path with GPS flight data",
-          description:
-            "<p>Hang gliding flight log data from Daniel H. Friedman.<br>Icon created by Larisa Skosyrska from the Noun Project</p>",
+          name: "Animation Generator",
+          description: "Generated by Re:earth Plugin",
           availability: interval,
-          path: {
+          polyline: {
+            positions: {
+              cartographicDegrees: polylineCreateArr,
+            },
             material: {
-              polylineOutline: {
+              solidColor: {
                 color: {
-                  rgba: [255, 255, 255, 255],
+                  rgba: pathColor,
                 },
               },
             },
-            width: 8,
-            resolution: 5,
+            width: pathWidth,
+            clampToGround: pathIsClampToGround,
           },
           orientation: {
             velocityReference: "#position",
           },
           billboard: {
             image: modelUrl,
-            scale: 1.5,
+            scale: scaleIcon,
             eyeOffset: {
               cartesian: [0.0, 0.0, -10.0],
             },
@@ -1764,30 +1989,33 @@ reearth.ui.show(
         },
         {
           id: "path" + Date.now().toString(36) + Math.random().toString(36).substr(2),
-          name: "path with GPS flight data",
+          name: "Animation Generator",
           description:
-            "<p>Hang gliding flight log data from Daniel H. Friedman.<br>Icon created by Larisa Skosyrska from the Noun Project</p>",
+            "Generated by Re:earth Plugin",
           availability: interval,
-          path: {
+          polyline: {
+            positions: {
+              cartographicDegrees: polylineCreateArr,
+            },
             material: {
-              polylineOutline: {
+              solidColor: {
                 color: {
-                  rgba: [255, 255, 255, 255],
+                  rgba: pathColor,
                 },
               },
             },
-            width: 8,
-            resolution: 5,
+            width: pathWidth,
+            clampToGround: pathIsClampToGround,
           },
           orientation: {
             velocityReference: "#position",
           },
           point: {
             color: {
-              rgba: pointSetting.point.color,
+              rgba: hexToRgbA(pointSetting.point.color),
             },
             outlineColor: {
-              rgba: pointSetting.outline.color,
+              rgba: hexToRgbA(pointSetting.outline.color),
             },
             outlineWidth: parseInt(pointSetting.outline.width),
             pixelSize: parseInt(pointSetting.point.size),
@@ -1817,8 +2045,12 @@ reearth.ui.show(
           temp = []
 
           let l = objData.length;
+          let polylineModel = [];
           for (let i=0; i< l; i++) {
-          temp.push(objData[i].unitTime*objData[i].time, objData[i].lng, objData[i].lat, objData[i].height)
+            polylineModel.push(objData[i].lng, objData[i].lat, objData[i].height)
+          }
+          for (let i=0; i< l; i++) {
+            temp.push(objData[i].unitTime*objData[i].time, objData[i].lng, objData[i].lat, objData[i].height)
           }
 
           let tempD=[]
@@ -1843,6 +2075,14 @@ reearth.ui.show(
           let endTime = startTimeDateformat.toISOString();
           let interval = startTime + "/" + endTime;
 
+          let pathSettingModel = JSON.parse(obj.querySelector(".animation-data").getAttribute("data-path-setting"))
+          if(!pathSettingModel.display) {
+            pathSettingModel.color = [0,0,0,0]
+          } else {
+            pathSettingModel.color = hexToRgbA(pathSettingModel.color)
+          }
+
+          let scaleIcon = obj.querySelector(".animation-data").getAttribute("data-icon-scale");
 
           if(typeStrModel === "model") {
             temp3.push(
@@ -1858,20 +2098,23 @@ reearth.ui.show(
               },
               {
                 id: "path" + Date.now().toString(36) + Math.random().toString(36).substr(2),
-                name: "path with GPS flight data",
+                name: "Animation Generator",
                 description:
-                  "<p>Hang gliding flight log data from Daniel H. Friedman.<br>Icon created by Larisa Skosyrska from the Noun Project</p>",
+                  "Generated by Re:earth Plugin",
                 availability: interval,
-                path: {
+                polyline: {
+                  positions: {
+                    cartographicDegrees: polylineModel,
+                  },
                   material: {
-                    polylineOutline: {
+                    solidColor: {
                       color: {
-                        rgba: [255, 255, 255, 255],
+                        rgba: pathSettingModel.color,
                       },
                     },
                   },
-                  width: 8,
-                  resolution: 5,
+                  width: pathSettingModel.width,
+                  clampToGround: pathSettingModel.isClampToGround,
                 },
                 orientation: {
                   velocityReference: "#position",
@@ -1902,27 +2145,30 @@ reearth.ui.show(
               },
               {
                 id: "path" + Date.now().toString(36) + Math.random().toString(36).substr(2),
-                name: "path with GPS flight data",
+                name: "Animation Generator",
                 description:
-                  "<p>Hang gliding flight log data from Daniel H. Friedman.<br>Icon created by Larisa Skosyrska from the Noun Project</p>",
+                  "Generated by Re:earth Plugin",
                 availability: interval,
-                path: {
+                polyline: {
+                  positions: {
+                    cartographicDegrees: polylineModel,
+                  },
                   material: {
-                    polylineOutline: {
+                    solidColor: {
                       color: {
-                        rgba: [255, 255, 255, 255],
+                        rgba: pathSettingModel.color,
                       },
                     },
                   },
-                  width: 8,
-                  resolution: 5,
+                  width: pathSettingModel.width,
+                  clampToGround: pathSettingModel.isClampToGround,
                 },
                 orientation: {
                   velocityReference: "#position",
                 },
                 billboard: {
                   image: modelDlUrl,
-                  scale: 1.5,
+                  scale: scaleIcon,
                   eyeOffset: {
                     cartesian: [0.0, 0.0, -10.0],
                   },
@@ -1949,30 +2195,32 @@ reearth.ui.show(
               },
               {
                 id: "path" + Date.now().toString(36) + Math.random().toString(36).substr(2),
-                name: "path with GPS flight data",
-                description:
-                  "<p>Hang gliding flight log data from Daniel H. Friedman.<br>Icon created by Larisa Skosyrska from the Noun Project</p>",
+                name: "Animation Generator",
+                description: "Generated by Re:earth Plugin",
                 availability: interval,
-                path: {
+                polyline: {
+                  positions: {
+                    cartographicDegrees: polylineModel,
+                  },
                   material: {
-                    polylineOutline: {
+                    solidColor: {
                       color: {
-                        rgba: [255, 255, 255, 255],
+                        rgba: pathSettingModel.color,
                       },
                     },
                   },
-                  width: 8,
-                  resolution: 5,
+                  width: pathSettingModel.width,
+                  clampToGround: pathSettingModel.isClampToGround,
                 },
                 orientation: {
                   velocityReference: "#position",
                 },
                 point: {
                   color: {
-                    rgba: dataPointStt.point.color,
+                    rgba: hexToRgbA(dataPointStt.point.color),
                   },
                   outlineColor: {
-                    rgba: dataPointStt.outline.color,
+                    rgba: hexToRgbA(dataPointStt.outline.color),
                   },
                   outlineWidth: parseInt(dataPointStt.outline.width),
                   pixelSize: parseInt(dataPointStt.point.size),
@@ -2014,95 +2262,138 @@ reearth.ui.show(
     }
 
     function createPathCzml(dataObj) {
-      let temp2 = [];
-      let keypoints = dataObj.keypoints;
+      if(getValue("data-keypoint")) {
+        let temp2 = [];
+        let keypoints = dataObj.keypoints;
 
-      let l = keypoints.length;
-      for (let i=0; i< l; i++) {
-        temp2.push(keypoints[i].time*keypoints[i].unitTime, keypoints[i].lng, keypoints[i].lat, keypoints[i].height)
-      }
-      let temp4=[]
-      for (let k=l; k<temp2.length;k++) {
-        temp4 = temp2.slice(-(l*4))
-      }
-      for(let k = 0; k < temp4.length; k++) {
-        if(k%4 === 0 && k> 0) {
-          temp4[k] = temp4[k] +  temp4[k-4]
+        let l = keypoints.length;
+        //add handle polyline array
+        let polylinePath = [];
+        for (let i=0; i< l; i++) {
+          polylinePath.push(keypoints[i].lng, keypoints[i].lat, keypoints[i].height)
         }
-        pointArr = [...temp4]
-      }
+        //close handle polyline array
+        for (let i=0; i< l; i++) {
+          temp2.push(keypoints[i].time*keypoints[i].unitTime, keypoints[i].lng, keypoints[i].lat, keypoints[i].height)
+        }
+        let temp4=[]
+        for (let k=l; k<temp2.length;k++) {
+          temp4 = temp2.slice(-(l*4))
+        }
+        for(let k = 0; k < temp4.length; k++) {
+          if(k%4 === 0 && k> 0) {
+            temp4[k] = temp4[k] +  temp4[k-4]
+          }
+          pointArr = [...temp4]
+        }
 
-      let sumTime = pointArr[pointArr.length -4]
-      //let startTime = (getElmById("start-time").value) + "Z";
-      let startTime = (dataObj.startTime) + "Z";
-      let startTimeDateformat = new Date(startTime)
-      startTimeDateformat.setSeconds(startTimeDateformat.getSeconds() + sumTime);
-      let endTime = startTimeDateformat.toISOString();
-      let interval = startTime + "/" + endTime;
+        let sumTime = pointArr[pointArr.length -4]
+        //let startTime = (getElmById("start-time").value) + "Z";
+        let startTime = (dataObj.startTime) + "Z";
+        let startTimeDateformat = new Date(startTime)
+        startTimeDateformat.setSeconds(startTimeDateformat.getSeconds() + sumTime);
+        let endTime = startTimeDateformat.toISOString();
+        let interval = startTime + "/" + endTime;
 
-      interval = dataObj.startTime + "/" + endTime;
-      typeModel = dataObj.dataType
+        interval = dataObj.startTime + "/" + endTime;
+        typeModel = dataObj.dataType
 
-      let czmlData = [
-            {
-              id: "document",
-              name: "CZML Path",
-              version: "1.0",
-              clock: {
-                interval: interval,
-                currentTime: startTime,
-                multiplier: 10,
+        let pathStt = dataObj.path;
+        if(!pathStt.display) {
+          pathStt.color = [0,0,0,0]
+        } else {
+          pathStt.color = hexToRgbA(pathStt.color)
+        }
+
+        let czmlData = [
+              {
+                id: "document",
+                name: "CZML Path",
+                version: "1.0",
+                clock: {
+                  interval: interval,
+                  currentTime: startTime,
+                  multiplier: 10,
+                },
               },
-            },
-            {
-              id: "path" + Date.now().toString(36) + Math.random().toString(36).substr(2),
-              name: "path with GPS flight data",
-              description:
-                "<p>Hang gliding flight log data from Daniel H. Friedman.<br>Icon created by Larisa Skosyrska from the Noun Project</p>",
-              availability: interval,
-              path: {
-                material: {
-                  polylineOutline: {
-                    color: {
-                      rgba: [255, 255, 255, 255],
+              {
+                id: "path" + Date.now().toString(36) + Math.random().toString(36).substr(2),
+                name: "Animation Generator",
+                description:
+                  "Generated by Re:earth Plugin",
+                availability: interval,
+                polyline: {
+                  positions: {
+                    cartographicDegrees: polylinePath,
+                  },
+                  material: {
+                    solidColor: {
+                      color: {
+                        rgba: pathStt.color,
+                      },
                     },
                   },
+                  width: pathStt.width,
+                  clampToGround: pathStt.isClampToGround,
                 },
-                width: 8,
-                resolution: 5,
-              },
-              orientation: {
-                velocityReference: "#position",
-              },
-              
-              position: {
-                epoch: startTime,
-                cartographicDegrees: pointArr,
-              },
-            }
-          ]; 
+                orientation: {
+                  velocityReference: "#position",
+                },
+                
+                position: {
+                  epoch: startTime,
+                  cartographicDegrees: pointArr,
+                },
+              }
+            ]; 
 
-          pathLayerId = getValue("data-path-layer");
-          parent.postMessage({ type: "showPath", czmlData, pathLayerId}, "*");
-        
-          return czmlData;
+            pathLayerId = getValue("data-path-layer");
+            parent.postMessage({ type: "showPath", czmlData, pathLayerId}, "*");
+          
+            return czmlData;
+        }
     } 
 
     // Change color picker from color hex
     function changeColorCode(item) {
-      console.log(item);
       let elm = item.closest("div"); 
       elm.querySelector(".color-picker").value = item.value;
     } 
 
     function changeColorPicker(item) {
-      console.log(item);
       let elm = item.closest("div"); 
       elm.querySelector(".color-code").value = item.value;
     } 
 
+    //This function will set default value for all inputs
+    function resetAllInputs() {
+      getElmById("lat-input").value = "";
+      getElmById("lng-input").value = "";
+      getElmById("height-point").value = 0;
+      getElmById("numbertime-input").value = 0;
+      getElmById("unittime-input").value = "1";
+      let colorInputCount = document.getElementsByClassName("color-code");
+      let colorPickerCount = document.getElementsByClassName("color-picker");
+      for (let i = 0; i < colorInputCount.length; i++) {
+        colorInputCount[i].value = "#FFFFFF";
+        colorPickerCount[i].value = "#FFFFFF";
+      }
+      getElmById("switch-display-path").checked = true;
+      getElmById("switch-display-path").closest('.switch_label').querySelector('.title').textContent = "表示";
+      getElmById("width-path").value = "10";
+      getElmById("isClampToGround").checked = true;
+      getElmById("size-point").value = "10";
+      getElmById("width-outline").value = "10";
+    }
 
-    // close handle download czml file
+    function switchDisplayPath(item) {
+      if (item.checked) {
+        item.closest('.switch_label').querySelector('.title').textContent = "表示";
+      } else {
+        item.closest('.switch_label').querySelector('.title').textContent = "非表示";
+      }
+
+    }
   
     // -------------------Close Handle Javascript re-earth related-------------------------------- //
   </script>
@@ -2134,6 +2425,7 @@ reearth.on("message", (msg) => {
           default: {
             location: { lat: msg.latPoint, lng: msg.lngPoint },
             style: "point",
+            heightReference: "clamp",
           },
         },
       })

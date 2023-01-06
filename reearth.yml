@@ -8,7 +8,7 @@ extensions:
     schema:
       groups:
         - id: model
-          title: Symbol    
+          title: シンボル  
           list: true
           representativeField: modelName
           fields:
@@ -28,4 +28,11 @@ extensions:
           - id: modelName
             type: string
             title: Name
+          - id: scale
+            type: number
+            title: Scale
+            availableIf:
+                field: modelOptions
+                type: string
+                value: icon
         
