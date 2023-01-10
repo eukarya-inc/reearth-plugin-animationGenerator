@@ -8,6 +8,7 @@
 - 左パネルのウィジェットから「Animation Generator」を選択した状態で、右パネルの「シンボルリスト」からオブジェクトのデータ追加ができます。
 - 追加できるデータは「Icon（画像）」「Model（3D）」の2種類です。「Name」は必ず設定をしてください。また、「Scale」で任意のサイズに拡大・縮小ができます。
 - データ追加が完了したら、一度左パネル「ウィジェット」からプラグインを無効化し、再度有効化すると反映がされます。
+
 ![](https://eukarya-inc.github.io/reearth-plugin-animationGenerator/src/img1.png)
   
 
