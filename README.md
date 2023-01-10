@@ -8,14 +8,14 @@
 - 左パネルのウィジェットから「Animation Generator」を選択した状態で、右パネルの「シンボルリスト」からオブジェクトのデータ追加ができます。
 - 追加できるデータは「Icon（画像）」「Model（3D）」の2種類です。「Name」は必ず設定をしてください。また、「Scale」で任意のサイズに拡大・縮小ができます。
 - データ追加が完了したら、一度左パネル「ウィジェット」からプラグインを無効化し、再度有効化すると反映がされます。
-<img src="src/img1.png" width=40%>
+<img src="https://eukarya-inc.github.io/reearth-plugin-animationGenerator/src/img1.png" width=40%>
   
 
 ## **（準備）編集ページでタイムラインの有効化**
 
 - 本プラグインを使用する際には、左パネル「シーン」を選択し、右パネルの設定からあらかじめ「タイムライン」を有効にしてください。
   
-<img src="src/img2.png" width=40%>
+<img src="https://eukarya-inc.github.io/reearth-plugin-animationGenerator/src/img2.png" width=40%>
 
 
 ## 使用方法
@@ -31,7 +31,7 @@
 - 点・線の大きさ・色や線の表示は編集の終了後に変更することができます。
 - Re:Earthの画面下部に表示されているタイムラインバーの「一時停止」をクリックすると、作成したアニメーションが動きます。
 
-![Untitled](src/img3.png)
+![Untitled](https://eukarya-inc.github.io/reearth-plugin-animationGenerator/src/img3.png)
 
 - 描画結果を保存したい場合は、「エクスポート」ボタンを押してGeoJsonファイルを作成します。作成したGeoJsonファイルはRe:Earthのファイルインポート機能でインポートすることができます。
 ※ブラウザの更新などをするとエクスポートしていないパスは消えてしまうので注意してください。
