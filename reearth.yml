@@ -1,6 +1,6 @@
 id: reearth-plugin-animation-generator
 name: Animation Generator
-version: 0.1.0
+version: 0.1.1
 extensions:
   - id: animation-generator
     type: widget
