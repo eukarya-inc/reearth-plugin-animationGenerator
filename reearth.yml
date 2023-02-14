@@ -31,8 +31,4 @@ extensions:
           - id: scale
             type: number
             title: Scale
-            availableIf:
-                field: modelOptions
-                type: string
-                value: icon
         

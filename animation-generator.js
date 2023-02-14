@@ -343,12 +343,6 @@ reearth.ui.show(
       transform: rotate(0deg);
     }
   
-    /* @media only screen (max-width: 1440px) {
-      span.down-ar {
-        top: 0px !important;
-      }
-    } */
-  
     #closed-logo {
       display: none;
       overflow: hidden;
@@ -711,8 +705,6 @@ reearth.ui.show(
       margin-right: -13px;
     }
 
-    
-
     .input-field {
       width: 71px;
       height: 27px;
@@ -734,6 +726,7 @@ reearth.ui.show(
       flex-direction: row;
       justify-content: space-between;
     }
+
     .input-group--row label {
       height: 14px;
       left: 2.09%;
@@ -759,6 +752,7 @@ reearth.ui.show(
       bottom: 2px;
       position: relative;
       cursor: pointer;
+      font-size: 10px;
     }
 
     span.spanInput {
@@ -947,7 +941,7 @@ reearth.ui.show(
             <path fill-rule="evenodd" clip-rule="evenodd" d="M15.6643 8.2757L13.3712 5.96006C13.1436 5.73035 12.7732 5.7286 12.5435 5.95611C12.3139 6.18347 12.312 6.55408 12.5395 6.78364L13.8483 8.10525L8.09745 8.12206C7.77425 8.12294 7.5128 8.38542 7.51367 8.70862C7.51441 9.03152 7.77615 9.29254 8.09891 9.29254L7.81703 9.29255L13.8423 9.27588L12.5395 10.5915C12.312 10.8211 12.3139 11.1917 12.5435 11.419C12.6576 11.5321 12.8066 11.5884 12.9553 11.5884C13.106 11.5884 13.2567 11.5307 13.3712 11.4151L15.6643 9.09928C15.8902 8.87118 15.8902 8.5038 15.6643 8.2757Z" fill="white"/>
             <path fill-rule="evenodd" clip-rule="evenodd" d="M6.28602 0.666748C6.11628 0.666748 5.9535 0.734176 5.83347 0.8542L1.35347 5.3342C1.23344 5.45423 1.16602 5.61701 1.16602 5.78675V12.8268C1.16602 13.8871 2.02563 14.7468 3.08602 14.7468H10.766C11.8264 14.7468 12.686 13.8871 12.686 12.8268C12.686 12.4733 12.3995 12.1868 12.046 12.1868C11.6926 12.1868 11.406 12.4733 11.406 12.8268C11.406 13.1803 11.1195 13.4668 10.766 13.4668H3.08602C2.73256 13.4668 2.44602 13.1803 2.44602 12.8268V6.32803C2.44602 6.15122 2.51626 5.98165 2.64128 5.85662L6.35586 2.14205C6.48088 2.01702 6.65045 1.94679 6.82726 1.94679H10.766C11.1195 1.94679 11.406 2.23333 11.406 2.58679V4.50677C11.406 4.86023 11.6926 5.14677 12.046 5.14677C12.3995 5.14677 12.686 4.86024 12.686 4.50677V2.58675C12.686 1.52636 11.8264 0.666748 10.766 0.666748H6.28602Z" fill="white"/>
             </svg>
-            <label class="export-label">CZMLファイルの出力</label></button>
+            <label class="export-label">エクスポートCZMLファイル</label></button>
         </div>
   
         <div class="" id="temp-right-section">
@@ -957,11 +951,12 @@ reearth.ui.show(
         <div class="" id="right-section">
           <input type="hidden" id="selectedAnimation" data-animation-id="" />
           <input type="hidden" id="selectedKeypoint" data-keypoint-id="" />
+          <input type="hidden" id="symbolList" data-symbol-list="" />
           <div class="form-group">
             <label class="input-title">シンボル</label>
             <select
               class="custom-select-options"
-              id="3dmodel" >
+              id="symbol-selection" >
               <option value="point" selected="selected">Point</option>
             </select>
           </div>
@@ -1117,12 +1112,12 @@ reearth.ui.show(
             <input
               type="hidden"
               class="animation-data"
-              data-3dmodel="point"
               data-start-time="2022-12-12T12:12:12"
               data-keypoint=""
               data-model-layer="" 
-              data-path-layer="" 
+              data-path-layer=""
               data-model-type="point"
+              data-symbol-id = "point"
             />
           </div>
 
@@ -1134,7 +1129,7 @@ reearth.ui.show(
     </form>
   </div>
   <script>
-    $("#3dmodel").select2({
+    $("#symbol-selection").select2({
       allowClear: false,
       minimumResultsForSearch: Infinity,
       language: {
@@ -1144,15 +1139,22 @@ reearth.ui.show(
       },
     });
   
-    $('#3dmodel').on("select2:selecting", function(e) { 
-      setAttrByAnimationId(getSelectedAnimationId(), "data-3dmodel", e.params.args.data.id);
-      setAttrByAnimationId(getSelectedAnimationId(), "data-model-type", e.params.args.data.element.attributes[0].nodeValue);
+    $('#symbol-selection').on("select2:selecting", function(e) { 
+      setAttrByAnimationId(getSelectedAnimationId(), "data-symbol-id", e.params.args.data.id);
+      setAttrByAnimationId(getSelectedAnimationId(), "data-model-type", getSymbolById(getValue("data-symbol-id")).type);
       setAttrByAnimationId(getSelectedAnimationId(), "data-icon-scale", e.params.args.data.element.attributes[1].nodeValue);
+
       if (e.params.args.data.id === "point") {
         getElmById("point-setting-section").style.display = "block";
       } else {
         getElmById("point-setting-section").style.display = "none";
       }
+
+      //Data will be updated automatically when finishing draw
+      if(!isStartDrawing) {
+        handleShowModel();
+      }
+
       updateIframe();
     });
   
@@ -1188,7 +1190,7 @@ reearth.ui.show(
 
           //Set style for drawing button
           item.value = "編集を終了する";
-          //getElmById("path-setting-section").style.display = "block";
+          
           getElmById("keypoint-section").style.display = "block";
           item.style.backgroundColor = "#597EF7";
 
@@ -1250,11 +1252,9 @@ reearth.ui.show(
 
 
       //reset right section
-      $('#3dmodel').val("point").trigger('change');
+      $('#symbol-selection').val("point").trigger('change');
       getElmById("start-drawing").value = "編集を開始する";
       getElmById("keypoint-section").style.display = "none";
-      //getElmById("path-setting-section").style.display = "none";
-
 
       keypoints = [];
       pointArr = [];
@@ -1417,9 +1417,6 @@ reearth.ui.show(
       updateIframe();
       
     }
-
-    // let pathLayerIdSelected
-    // let modelLayerIdSelected
   
     function selectAnimation(item) {
       
@@ -1441,17 +1438,16 @@ reearth.ui.show(
       getElmById("start-time").value = aniDataElm.getAttribute("data-start-time");
       
       if (aniDataElm.getAttribute("data-model-type") != "point") {
-        $("#3dmodel")
-          .val(aniDataElm.getAttribute("data-3dmodel"))
+        $("#symbol-selection")
+          .val(aniDataElm.getAttribute("data-symbol-id"))
           .trigger("change");
           getElmById("point-setting-section").style.display = "none";
       } else {
-        $("#3dmodel")
+        $("#symbol-selection")
           .val("point")
           .trigger("change");
           getElmById("point-setting-section").style.display = "block";
       }
-      
 
       getElmById("keypoint-section").style.display = "block";
       showKeypointList(item.getAttribute("id"));
@@ -1479,9 +1475,6 @@ reearth.ui.show(
         getElmById("width-outline").value = pointSetting.outline.width;
         
       }
-      // pathLayerIdSelected = aniDataElm.getAttribute("data-path-layer")
-      // modelLayerIdSelected = aniDataElm.getAttribute("data-model-layer")
-
       
       updateIframe();
     }
@@ -1577,7 +1570,6 @@ reearth.ui.show(
   
     //declare variable
     let cesiumAPI, reearthAPI;
-    // let cartesianArr = [];
     let modelUrl;
     let pointArr = [];
     let allPathArr = new Array();
@@ -1602,6 +1594,9 @@ reearth.ui.show(
     console.clear();
   
     //declare function needed
+
+    //Init symbol list
+    saveSymbolList(null);
   
     const setValue = (id, value) => {
       document.getElementById(id).value = value ?? "";
@@ -1647,27 +1642,34 @@ reearth.ui.show(
       // get model url from upload
       property = e.data.property;
       if (property?.hasOwnProperty("model")) {
-        let modelElm = getElmById("3dmodel");
+        let modelElm = getElmById("symbol-selection");
         modelElm.replaceChildren();
 
-        let opt = document.createElement("option");
-        opt.setAttribute("data-model-type", "point"); 
-        opt.value = "point";
-        opt.innerHTML = "Point";
-        modelElm.appendChild(opt);
+        saveSymbolList(property.model);
 
-        property.model?.map((item, id) => {
-          if(item.modelUrl && item.modelName) {
+        getSymbolList()?.map((item, id) => {
+          if(item.url && item.name) {
             opt = document.createElement("option");
-            item.modelOptions = item.modelOptions ? item.modelOptions : "model";
-            opt.setAttribute("data-model-type", item.modelOptions); 
+            item.type = item.type ? item.type : "model";
+            opt.setAttribute("data-model-type", item.type); 
             item.scale = item.scale ? item.scale : 1;
             opt.setAttribute("data-icon-scale", item.scale); 
-            opt.value = item.modelUrl;
-            opt.innerHTML = item.modelName;
+            opt.value = item.id;
+            opt.innerHTML = item.name;
             modelElm.appendChild(opt);
 
-            //work with scale of billboard
+            //Update symbol list by animation
+            if (getValue("data-model-type") != "point") {
+              $("#symbol-selection")
+                .val(getValue("data-symbol-id"))
+                .trigger("change");
+                getElmById("point-setting-section").style.display = "none";
+            } else {
+              $("#symbol-selection")
+                .val("point")
+                .trigger("change");
+                getElmById("point-setting-section").style.display = "block";
+            }
           }
         });
       }
@@ -1754,6 +1756,7 @@ reearth.ui.show(
       let keypointId = getElmById("selectedKeypoint")
         .getAttribute("data-keypoint-id");
       let id = keypointId.substring(keypointId.lastIndexOf("-")+1);
+
       //Get data of keypoint
       let keypoints = JSON.parse(getValue("data-keypoint"));
       let keypoint = keypoints[parseInt(id)-1];
@@ -1771,7 +1774,7 @@ reearth.ui.show(
       let dataObj = {
         keypoints: keypoints,
         startTime: getValue("data-start-time"),
-        modelUrl: $('#3dmodel').select2().val() || "https://static.reearth.io/assets/01gkn5kjpxbhtnr8adpdmq3jaf.glb",
+        modelUrl: $('#symbol-selection').select2().val() || "https://static.reearth.io/assets/01gkn5kjpxbhtnr8adpdmq3jaf.glb",
         path: JSON.parse(getValue("data-path-setting"))
       }
 
@@ -1802,7 +1805,7 @@ reearth.ui.show(
       let dataObj = {
         keypoints: keypoints,
         startTime: getValue("data-start-time"),
-        modelUrl: $('#3dmodel').select2().val() || "https://static.reearth.io/assets/01gkn5kjpxbhtnr8adpdmq3jaf.glb",
+        modelUrl: $('#symbol-selection').select2().val() || "https://static.reearth.io/assets/01gkn5kjpxbhtnr8adpdmq3jaf.glb",
         path: JSON.parse(getValue("data-path-setting")),
       }
 
@@ -1812,19 +1815,16 @@ reearth.ui.show(
   
     // Handle show model after click finish button
     function handleShowModel() {
-      //setAttrByAnimationId(getSelectedAnimationId(), "data-point-setting", JSON.stringify(getPointSetting()));
-      //setAttrByAnimationId(getSelectedAnimationId(), "data-path-setting", JSON.stringify(getPathSetting()));
-
-      
       if(getValue("data-keypoint")) {
         let dataObj = {
           keypoints: JSON.parse(getValue("data-keypoint")),
           startTime: getValue("data-start-time"),
-          modelUrl: getValue("data-3dmodel") || "https://static.reearth.io/assets/01gkn5kjpxbhtnr8adpdmq3jaf.glb",
+          modelUrl: getSymbolById(getValue("data-symbol-id")).url,
           dataType: getValue("data-model-type"),
           dataPoint: getValue("data-point-setting"),
           dataPath: JSON.parse(getValue("data-path-setting")),
-          scale: getValue("data-icon-scale")
+          //scale: getValue("data-icon-scale")
+          scale: getSymbolById(getValue("data-symbol-id")).scale
         }
   
           czmlData2 = createAnimationCzml(dataObj);
@@ -1917,8 +1917,7 @@ reearth.ui.show(
           },
           model: {
             gltf: modelUrl,
-            scale: 2.0,
-            minimumPixelSize: 128,
+            scale: scaleIcon,
             heightReference: "RELATIVE_TO_GROUND",
           },
           position: {
@@ -2065,7 +2064,7 @@ reearth.ui.show(
           }
 
           let typeStrModel = (obj.querySelector(".animation-data").getAttribute("data-model-type"));
-          let modelDlUrl = (obj.querySelector(".animation-data").getAttribute("data-3dmodel"));
+          let modelDlUrl = (getSymbolById(obj.querySelector(".animation-data").getAttribute("data-symbol-id")).url);
           let dataPointStt = JSON.parse(obj.querySelector(".animation-data").getAttribute("data-point-setting"));
 
           let startTime = obj.querySelector(".animation-data").getAttribute("data-start-time") + "Z";
@@ -2082,7 +2081,7 @@ reearth.ui.show(
             pathSettingModel.color = hexToRgbA(pathSettingModel.color)
           }
 
-          let scaleIcon = obj.querySelector(".animation-data").getAttribute("data-icon-scale");
+          let scaleIcon = getSymbolById(obj.querySelector(".animation-data").getAttribute("data-symbol-id")).scale;
 
           if(typeStrModel === "model") {
             temp3.push(
@@ -2121,8 +2120,7 @@ reearth.ui.show(
                 },
                 model: {
                   gltf: modelDlUrl,
-                  scale: 2.0,
-                  minimumPixelSize: 128,
+                  scale: scaleIcon,
                   heightReference: "RELATIVE_TO_GROUND",
                 },
                 position: {
@@ -2393,6 +2391,49 @@ reearth.ui.show(
         item.closest('.switch_label').querySelector('.title').textContent = "非表示";
       }
 
+    }
+
+    function saveSymbolList(data) {
+      let symbolList = [];
+      symbolList.push({
+        id: "point",
+        type: "point",
+        name: "Point",
+        url: "point",
+        scale: 1
+      });
+      
+      data?.map((item) => {
+        symbolList.push({
+          id: item.id,
+          type: item.modelOptions || "model",
+          name: item.modelName,
+          url: item.modelUrl,
+          scale: item.scale || 1
+        });
+      });
+
+      //Save symbol list
+      getElmById("symbolList").setAttribute("data-symbol-list", JSON.stringify(symbolList));
+    }
+
+
+    function getSymbolList() {
+      let symbolListData = getElmById("symbolList").getAttribute("data-symbol-list");
+      if (symbolListData != "") {
+        return JSON.parse(symbolListData);
+      }
+      return null;
+    }
+
+    function getSymbolById(id) {
+      let symbolListData = getElmById("symbolList").getAttribute("data-symbol-list");
+      if (symbolListData != "") {
+        let symbolList = JSON.parse(symbolListData);
+        return symbolList.find(elm => elm.id === id);
+      }
+       
+      return null;
     }
   
     // -------------------Close Handle Javascript re-earth related-------------------------------- //
