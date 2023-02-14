@@ -1,6 +1,6 @@
 id: reearth-plugin-animation-generator
 name: Animation Generator
-version: 0.1.1
+version: 0.1.2
 extensions:
   - id: animation-generator
     type: widget
@@ -31,4 +31,8 @@ extensions:
           - id: scale
             type: number
             title: Scale
+            availableIf:
+                field: modelOptions
+                type: string
+                value: icon
         
