@@ -57,7 +57,7 @@
 
  ![](https://eukarya-inc.github.io/reearth-plugin-shinsuiNavi/src/logo-3.png)
 
-ソースコードはこちら(https://github.com/eukarya-inc/reearth-plugin-shinsuiNavi)
+ソースコードはこちら(https://github.com/eukarya-inc/reearth-plugin-animationGenerator)
 
 - コミュニティ
 
