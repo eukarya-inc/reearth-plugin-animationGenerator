@@ -24,13 +24,21 @@
 ![](https://eukarya-inc.github.io/reearth-plugin-animationGenerator/src/Animation1.png)
 - 地図上左上のアイコン（上図での赤枠部分）をクリックして、アニメーションの作成画面を開きます。
 - 「アニメーションリスト」の「＋」をクリックし、アニメーションの作成を開始します。不要なアニメーションは削除ボタンで消すことができます。
+
+![](https://eukarya-inc.github.io/reearth-plugin-animationGenerator/src/img6.png)
+
 - 「シンボル」で動かしたいオブジェクトを選択します。初期状態ではPointが設定されており、データ追加した場合は選択ができるようになります。
+
+![](https://eukarya-inc.github.io/reearth-plugin-animationGenerator/src/img7.png)
+
 - シンボルを決定したら、「編集を開始する」をクリックします。シンボルを動かしたい地点をクリックしていくと、地点と線が描画され、地点リストに地点が登録されます。
 - 地点1の移動時間はデフォルトで0に設定されています。各地点を選択すると、地点の高さと、前の地点からの移動時間が設定できます。
     - `高さ`：地点の地表面からの高さを指定します。
     - `移動時間`：前の地点からの移動時間を指定します。
 - すべての地点の設定が完了したら、「編集を終了する」をクリックします。
 - 点・線の大きさ・色や線の表示は編集の終了後に変更することができます。
+
+![](https://eukarya-inc.github.io/reearth-plugin-animationGenerator/src/img8.png)
 - Re:Earthの画面下部に表示されているタイムラインバーの「一時停止」をクリックすると、作成したアニメーションが動きます。
   
   ![](https://eukarya-inc.github.io/reearth-plugin-animationGenerator/src/img3.png)
